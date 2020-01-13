@@ -41,6 +41,6 @@ class Snake {
   }
 
   increase(part) {
-    this.positions.push(part.slice());
+    this.positions.unshift(part.slice());
   }
 }
