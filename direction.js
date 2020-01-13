@@ -1,7 +1,7 @@
-const EAST = 0;
-const NORTH = 1;
-const WEST = 2;
-const SOUTH = 3;
+const EAST = 1;
+const NORTH = 2;
+const WEST = 3;
+const SOUTH = 4;
 
 class Direction {
   constructor(initialHeading) {
@@ -18,6 +18,18 @@ class Direction {
   }
 
   turnLeft() {
-    this.heading = (this.heading + 1) % 4;
+    this.heading = this.heading == 1 ? 1 : 3;
+  }
+
+  turnRight() {
+    this.heading = this.heading == 3 ? 3 : 1;
+  }
+
+  turnUp() {
+    this.heading = this.heading == 4 ? 4 : 2;
+  }
+
+  turnDown() {
+    this.heading = this.heading == 2 ? 2 : 4;
   }
 }

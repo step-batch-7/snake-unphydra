@@ -14,8 +14,8 @@ class Snake {
     return this.type;
   }
 
-  turnLeft() {
-    this.direction.turnLeft();
+  turn(direction) {
+    this.direction[direction]();
   }
 
   move() {
