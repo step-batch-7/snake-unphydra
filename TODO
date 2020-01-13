@@ -15,6 +15,11 @@
 
 --DONE-- * Change color of ghost snake
 
+*create game master which will run the whole game withOut contact with the IO
+  *create game and just extract the snake move to it.
+  *hold the responsibility and the reference of snakes
+  *implement turn left right of snake
+
 
 * Generate food periodically
 * Allow snake to eat food when food becomes available
