@@ -31,9 +31,9 @@ const drawFood = function(food) {
 };
 
 const eraseFood = function(food) {
-  const [colId, rowId] = food.previousFood;
+  const [colId, rowId] = food.previousFood.position;
   const cell = getCell(colId, rowId);
-  cell.classList.remove(food.type);
+  cell.classList.remove(food.previousFood.type);
   return;
 };
 
@@ -85,7 +85,7 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const food = new Food([43, 25], 'normal');
+  const food = new Food([58, 25], 'normal');
   const game = new Game(snake, ghostSnake, food);
   return game;
 };

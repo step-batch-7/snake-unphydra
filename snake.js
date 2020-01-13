@@ -37,8 +37,6 @@ class Snake {
 
   isOnFood(food) {
     const head = this.positions.slice(-1)[0];
-    console.log(isHeadOnFood(head, food));
-
     return isHeadOnFood(head, food);
   }
 

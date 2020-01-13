@@ -9,12 +9,12 @@ class Game {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
     this.food = food;
-    this.previousFood = [0, 0];
+    this.previousFood = new Food([0, 0], 'normal');
   }
 
   moveSnake() {
     this.snake.move();
-    this.ghostSnake.move();
+    // this.ghostSnake.move();
   }
 
   turn(snake, direction) {
@@ -25,9 +25,9 @@ class Game {
     const foodPosition = this.food.location;
     if (this.snake.isOnFood(foodPosition)) {
       this.snake.increase(foodPosition);
-      this.previousFood = foodPosition;
+      this.previousFood = this.food;
       const position = getRandomPosition();
-      this.food = new Food(position, 'normal');
+      this.food = new Food(position, 'special');
     }
   }
 
@@ -47,7 +47,10 @@ class Game {
     const food = {
       type: this.food.specialty,
       position: this.food.location,
-      previousFood: this.previousFood
+      previousFood: {
+        position: this.previousFood.location,
+        type: this.previousFood.specialty
+      }
     };
     return { snakes, food };
   }
