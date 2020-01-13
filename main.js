@@ -16,7 +16,7 @@ const drawSnakes = function(snakes) {
   });
 };
 
-const drawOnGrid = function(game) {
+const drawGameOnGrid = function(game) {
   const status = game.status;
   drawSnakes(status.snakes);
   eraseTail(status.snakes);
@@ -111,11 +111,11 @@ const main = function() {
 
   attachEventListeners(game);
   createGrids();
-  drawOnGrid(game);
+  drawGameOnGrid(game);
 
   setInterval(() => {
     game.moveSnake();
-    drawOnGrid(game);
+    drawGameOnGrid(game);
   }, 200);
 
   setInterval(() => {
