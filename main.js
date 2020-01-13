@@ -1,14 +1,25 @@
-const eraseTail = function(snake) {
-  let [colId, rowId] = snake.previousTail;
-  const cell = getCell(colId, rowId);
-  cell.classList.remove(snake.species);
+const eraseTail = function(snakes) {
+  snakes.forEach(snake => {
+    let [colId, rowId] = snake.previousTail;
+    const cell = getCell(colId, rowId);
+    cell.classList.remove(snake.type);
+  });
 };
 
-const drawSnake = function(snake) {
-  snake.location.forEach(([colId, rowId]) => {
-    const cell = getCell(colId, rowId);
-    cell.classList.add(snake.species);
+const drawSnakes = function(snakes) {
+  snakes.forEach(snake => {
+    const type = snake.type;
+    snake.position.forEach(([colId, rowId]) => {
+      const cell = getCell(colId, rowId);
+      cell.classList.add(type);
+    });
   });
+};
+
+const drawOnGrid = function(game) {
+  const status = game.status;
+  drawSnakes(status.snakes);
+  eraseTail(status.snakes);
 };
 
 const handleKeyPress = game => {
@@ -51,9 +62,26 @@ class Game {
   turn(snake, direction) {
     this[snake].turn(direction);
   }
+
+  get status() {
+    const snakes = [
+      {
+        type: this.snake.species,
+        position: this.snake.location,
+        previousTail: this.snake.movedTail
+      },
+      {
+        type: this.ghostSnake.species,
+        position: this.ghostSnake.location,
+        previousTail: this.ghostSnake.movedTail
+      }
+    ];
+    // const food = {position:this.food.location}
+    return { snakes };
+  }
 }
 
-const main = function() {
+const initializeGame = function() {
   const snake = new Snake(
     [
       [40, 25],
@@ -75,16 +103,19 @@ const main = function() {
   );
 
   const game = new Game(snake, ghostSnake);
+  return game;
+};
+
+const main = function() {
+  const game = initializeGame();
 
   attachEventListeners(game);
   createGrids();
-  drawSnake(game.snake);
-  drawSnake(game.ghostSnake);
+  drawOnGrid(game);
 
   setInterval(() => {
     game.moveSnake();
-    moveAndDrawSnake(game.snake);
-    moveAndDrawSnake(game.ghostSnake);
+    drawOnGrid(game);
   }, 200);
 
   setInterval(() => {

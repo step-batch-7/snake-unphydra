@@ -14,6 +14,10 @@ class Snake {
     return this.type;
   }
 
+  get movedTail() {
+    return this.previousTail;
+  }
+
   turn(direction) {
     this.direction[direction]();
   }
