@@ -10,6 +10,7 @@ class Game {
     this.ghostSnake = ghostSnake;
     this.food = food;
     this.previousFood = new Food([0, 0], 'normal');
+    this.normalFoodCount = 0;
   }
 
   moveSnake() {
@@ -24,10 +25,15 @@ class Game {
   update() {
     const foodPosition = this.food.location;
     if (this.snake.isOnFood(foodPosition)) {
+      this.normalFoodCount++;
       this.snake.increase(foodPosition);
       this.previousFood = this.food;
       const position = getRandomPosition();
-      this.food = new Food(position, 'special');
+      let type = 'normal';
+      if (!(this.normalFoodCount % 5)) {
+        type = 'special';
+      }
+      this.food = new Food(position, type);
     }
   }
 
