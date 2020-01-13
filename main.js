@@ -11,20 +11,20 @@ const drawSnake = function(snake) {
   });
 };
 
-const handleKeyPress = snake => {
+const handleKeyPress = game => {
   const key = event.key;
   switch (key) {
     case 'ArrowLeft':
-      snake.turn('turnLeft');
+      game.turn('snake', 'turnLeft');
       break;
     case 'ArrowRight':
-      snake.turn('turnRight');
+      game.turn('snake', 'turnRight');
       break;
     case 'ArrowUp':
-      snake.turn('turnUp');
+      game.turn('snake', 'turnUp');
       break;
     case 'ArrowDown':
-      snake.turn('turnDown');
+      game.turn('snake', 'turnDown');
       break;
   }
 };
@@ -34,8 +34,8 @@ const moveAndDrawSnake = function(snake) {
   drawSnake(snake);
 };
 
-const attachEventListeners = snake => {
-  document.body.onkeydown = handleKeyPress.bind(null, snake);
+const attachEventListeners = game => {
+  document.body.onkeydown = handleKeyPress.bind(null, game);
 };
 
 class Game {
@@ -46,6 +46,10 @@ class Game {
   moveSnake() {
     this.snake.move();
     this.ghostSnake.move();
+  }
+
+  turn(snake, direction) {
+    this[snake].turn(direction);
   }
 }
 
@@ -72,7 +76,7 @@ const main = function() {
 
   const game = new Game(snake, ghostSnake);
 
-  attachEventListeners(game.snake);
+  attachEventListeners(game);
   createGrids();
   drawSnake(game.snake);
   drawSnake(game.ghostSnake);
@@ -86,19 +90,19 @@ const main = function() {
   setInterval(() => {
     let x = Math.random() * 100;
     if (x > 75) {
-      game.ghostSnake.turn('turnLeft');
+      game.turn('ghostSnake', 'turnLeft');
     }
 
     if (x > 50 && x < 75) {
-      game.ghostSnake.turn('turnUp');
+      game.turn('ghostSnake', 'turnUp');
     }
 
     if (x > 25 && x < 50) {
-      game.ghostSnake.turn('turnRight');
+      game.turn('ghostSnake', 'turnRight');
     }
 
     if (x < 25) {
-      game.ghostSnake.turn('turnDown');
+      game.turn('ghostSnake', 'turnDown');
     }
   }, 500);
 };
