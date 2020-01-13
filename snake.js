@@ -1,3 +1,7 @@
+const isHeadOnFood = function(head, food) {
+  return head[0] == food[0] && head[1] == food[1];
+};
+
 class Snake {
   constructor(positions, direction, type) {
     this.positions = positions.slice();
@@ -29,5 +33,16 @@ class Snake {
     const [deltaX, deltaY] = this.direction.delta;
 
     this.positions.push([headX + deltaX, headY + deltaY]);
+  }
+
+  isOnFood(food) {
+    const head = this.positions.slice(-1)[0];
+    console.log(isHeadOnFood(head, food));
+
+    return isHeadOnFood(head, food);
+  }
+
+  increase(part) {
+    this.positions.push(part.slice());
   }
 }

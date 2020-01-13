@@ -21,12 +21,20 @@ const drawGameOnGrid = function(game) {
   drawSnakes(status.snakes);
   eraseTail(status.snakes);
   drawFood(status.food);
+  eraseFood(status.food);
 };
 
 const drawFood = function(food) {
   const [colId, rowId] = food.position;
   const cell = getCell(colId, rowId);
   cell.classList.add(food.type);
+};
+
+const eraseFood = function(food) {
+  const [colId, rowId] = food.previousFood;
+  const cell = getCell(colId, rowId);
+  cell.classList.remove(food.type);
+  return;
 };
 
 const handleKeyPress = game => {
@@ -77,7 +85,7 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const food = new Food([10, 10], 'normal');
+  const food = new Food([43, 25], 'normal');
   const game = new Game(snake, ghostSnake, food);
   return game;
 };
@@ -91,8 +99,9 @@ const main = function() {
 
   setInterval(() => {
     game.moveSnake();
+    game.update();
     drawGameOnGrid(game);
-  }, 100);
+  }, 50);
 
   setInterval(() => {
     let x = Math.random() * 100;
