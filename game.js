@@ -1,7 +1,8 @@
 class Game {
-  constructor(snake, ghostSnake) {
+  constructor(snake, ghostSnake, food) {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
+    this.food = food;
   }
   moveSnake() {
     this.snake.move();
@@ -25,7 +26,10 @@ class Game {
         previousTail: this.ghostSnake.movedTail
       }
     ];
-    // const food = {position:this.food.location}
-    return { snakes };
+    const food = {
+      position: this.food.location,
+      type: this.food.specialty
+    };
+    return { snakes, food };
   }
 }

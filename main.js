@@ -1,6 +1,6 @@
 const eraseTail = function(snakes) {
   snakes.forEach(snake => {
-    let [colId, rowId] = snake.previousTail;
+    const [colId, rowId] = snake.previousTail;
     const cell = getCell(colId, rowId);
     cell.classList.remove(snake.type);
   });
@@ -20,6 +20,13 @@ const drawGameOnGrid = function(game) {
   const status = game.status;
   drawSnakes(status.snakes);
   eraseTail(status.snakes);
+  drawFood(status.food);
+};
+
+const drawFood = function(food) {
+  const [colId, rowId] = food.position;
+  const cell = getCell(colId, rowId);
+  cell.classList.add(food.type);
 };
 
 const handleKeyPress = game => {
@@ -70,7 +77,8 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const game = new Game(snake, ghostSnake);
+  const food = new Food([10, 10], 'normal');
+  const game = new Game(snake, ghostSnake, food);
   return game;
 };
 
@@ -84,7 +92,7 @@ const main = function() {
   setInterval(() => {
     game.moveSnake();
     drawGameOnGrid(game);
-  }, 200);
+  }, 100);
 
   setInterval(() => {
     let x = Math.random() * 100;

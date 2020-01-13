@@ -24,3 +24,7 @@ h1 {
   background-color: gray;
   border-radius: 50%;
 }
+
+.normal {
+  background-color: red;
+}
