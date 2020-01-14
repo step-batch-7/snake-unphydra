@@ -21,16 +21,6 @@ const drawSnakes = function(snakes) {
   });
 };
 
-const drawGameOnGrid = function(game) {
-  const status = game.status;
-  drawSnakes(status.snakes);
-  eraseTail(status.snakes);
-  drawFood(status.food);
-  eraseFood(status.food);
-  showSideBoard(status.score, 'scoreResult');
-  showSideBoard(status.time, 'remainingTime');
-};
-
 const showSideBoard = function(value, id) {
   const box = document.getElementById(id);
   box.innerText = value;
@@ -47,6 +37,25 @@ const eraseFood = function(food) {
   const cell = getCell(colId, rowId);
   cell.classList.remove(food.previousFood.type);
   return;
+};
+const drawGameOnGrid = function(game) {
+  const status = game.status;
+  drawSnakes(status.snakes);
+  eraseTail(status.snakes);
+  drawFood(status.food);
+  eraseFood(status.food);
+  showSideBoard(status.score, 'scoreResult');
+  showSideBoard(status.time, 'remainingTime');
+};
+
+const showGameOverBoard = function(game) {
+  const score = game.status.score;
+  const gameOverBoard = document.getElementById('gameOverBoard');
+  const gameOverScore = document.getElementById('gameOverScore');
+  const gameBody = document.getElementById('gameBody');
+  gameBody.style.opacity = 0.1;
+  gameOverBoard.style.marginTop = '0';
+  gameOverScore.innerText = score;
 };
 
 const handleKeyPress = game => {
@@ -114,6 +123,10 @@ const main = function() {
   drawGameOnGrid(game);
 
   const movementId = setInterval(() => {
+    if (game.isOver()) {
+      showGameOverBoard(game);
+      clearInterval(movementId);
+    }
     game.moveSnake();
     game.update();
     drawGameOnGrid(game);

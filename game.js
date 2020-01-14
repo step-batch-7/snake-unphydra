@@ -13,12 +13,12 @@ class Game {
     this.normalFoodCount = 1;
     this.score = score;
     this.timer = timer;
-    this.timerId = timer.startTime();
+    this.timerId = this.timer.startTime();
   }
 
   moveSnake() {
     this.snake.move();
-    this.ghostSnake.move();
+    // this.ghostSnake.move();
   }
 
   turn(snake, direction) {
@@ -26,7 +26,9 @@ class Game {
   }
 
   isOver() {
-    return this.timer.isTimeFinish();
+    return (
+      this.timer.isTimeFinish() && (clearInterval(this.timerId) || true)
+    );
   }
 
   update() {
