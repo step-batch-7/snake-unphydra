@@ -120,21 +120,8 @@ const main = function() {
   }, 50);
 
   setInterval(() => {
-    let x = Math.random() * 100;
-    if (x > 75) {
-      game.turn('ghostSnake', 'turnLeft');
-    }
-
-    if (x > 50 && x < 75) {
-      game.turn('ghostSnake', 'turnUp');
-    }
-
-    if (x > 25 && x < 50) {
-      game.turn('ghostSnake', 'turnRight');
-    }
-
-    if (x < 25) {
-      game.turn('ghostSnake', 'turnDown');
-    }
+    const direction = ['turnLeft', 'turnUp', 'turnRight', 'turnDown'];
+    let x = Math.round(Math.random() * 3);
+    game.turn('ghostSnake', direction[x]);
   }, 500);
 };
