@@ -1,3 +1,8 @@
+const EAST = 1;
+const NORTH = 2;
+const WEST = 3;
+const SOUTH = 4;
+
 const eraseTail = function(snakes) {
   snakes.forEach(snake => {
     const [colId, rowId] = snake.previousTail;

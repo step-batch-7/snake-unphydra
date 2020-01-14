@@ -1,8 +1,3 @@
-const EAST = 1;
-const NORTH = 2;
-const WEST = 3;
-const SOUTH = 4;
-
 class Direction {
   constructor(initialHeading) {
     this.heading = initialHeading;
