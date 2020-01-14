@@ -96,7 +96,7 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const food = new Food([58, 25], 'normal');
+  const food = new Food([58, 25], 'normal', 1);
 
   const score = new Score(0);
   const game = new Game(snake, ghostSnake, food, score);
