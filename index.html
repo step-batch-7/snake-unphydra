@@ -9,9 +9,17 @@
     <script src="snake.js"></script>
     <script src="direction.js"></script>
     <script src="food.js"></script>
+    <script src="score.js"></script>
   </head>
   <body onload="main()">
     <h1>Snake Game</h1>
-    <div id="grid"></div>
+    <div style="display: flex; justify-content: center;">
+      <div id="time"></div>
+      <div id="grid"></div>
+      <div id="score">
+        <div>Score</div>
+        <div id="scoreResult">0</div>
+      </div>
+    </div>
   </body>
 </html>

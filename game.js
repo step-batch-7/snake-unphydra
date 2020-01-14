@@ -1,16 +1,17 @@
 const getRandomPosition = function() {
-  const colNo = Math.round(Math.random() * 99);
-  const rowNo = Math.round(Math.random() * 59);
+  const colNo = Math.round(Math.random() * (NUM_OF_COLS - 1));
+  const rowNo = Math.round(Math.random() * (NUM_OF_ROWS - 1));
   return [colNo, rowNo];
 };
 
 class Game {
-  constructor(snake, ghostSnake, food) {
+  constructor(snake, ghostSnake, food, score) {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
     this.food = food;
     this.previousFood = new Food([0, 0], 'normal');
     this.normalFoodCount = 0;
+    this.score = score;
   }
 
   moveSnake() {
@@ -26,6 +27,7 @@ class Game {
     const foodPosition = this.food.location;
     if (this.snake.isOnFood(foodPosition)) {
       this.normalFoodCount++;
+      this.score.increaseScore(1);
       this.snake.increase(foodPosition);
       this.previousFood = this.food;
       const position = getRandomPosition();
@@ -58,6 +60,8 @@ class Game {
         type: this.previousFood.specialty
       }
     };
-    return { snakes, food };
+
+    const score = this.score.currentScore;
+    return { snakes, food, score };
   }
 }

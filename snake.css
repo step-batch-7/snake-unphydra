@@ -5,7 +5,7 @@ h1 {
 #grid {
   width: 800px;
   display: flex;
-  margin: 0 auto;
+  margin: 0px 50px;
   flex-wrap: wrap;
   border: 1px solid black;
 }
@@ -23,6 +23,20 @@ h1 {
 .ghost {
   background-color: gray;
   border-radius: 50%;
+}
+
+#score {
+  border: 2px solid black;
+  width: 200px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 800;
+  padding-top: 170px;
+}
+
+#time {
+  border: 2px solid black;
+  width: 200px;
 }
 
 .normal {

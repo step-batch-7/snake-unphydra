@@ -27,6 +27,12 @@ const drawGameOnGrid = function(game) {
   eraseTail(status.snakes);
   drawFood(status.food);
   eraseFood(status.food);
+  showScore(status.score);
+};
+
+const showScore = function(score) {
+  const scoreResult = document.getElementById('scoreResult');
+  scoreResult.innerText = score;
 };
 
 const drawFood = function(food) {
@@ -91,7 +97,9 @@ const initializeGame = function() {
   );
 
   const food = new Food([58, 25], 'normal');
-  const game = new Game(snake, ghostSnake, food);
+
+  const score = new Score(0);
+  const game = new Game(snake, ghostSnake, food, score);
   return game;
 };
 
