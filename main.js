@@ -113,7 +113,7 @@ const main = function() {
   createGrids();
   drawGameOnGrid(game);
 
-  setInterval(() => {
+  const movementId = setInterval(() => {
     game.moveSnake();
     game.update();
     drawGameOnGrid(game);
