@@ -27,18 +27,13 @@ const drawGameOnGrid = function(game) {
   eraseTail(status.snakes);
   drawFood(status.food);
   eraseFood(status.food);
-  showScore(status.score);
-  showTime(status.time);
+  showSideBoard(status.score, 'scoreResult');
+  showSideBoard(status.time, 'remainingTime');
 };
 
-const showTime = function(time) {
-  const remainingTime = document.getElementById('remainingTime');
-  remainingTime.innerText = time;
-};
-
-const showScore = function(score) {
-  const scoreResult = document.getElementById('scoreResult');
-  scoreResult.innerText = score;
+const showSideBoard = function(value, id) {
+  const box = document.getElementById(id);
+  box.innerText = value;
 };
 
 const drawFood = function(food) {
