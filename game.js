@@ -5,13 +5,15 @@ const getRandomPosition = function() {
 };
 
 class Game {
-  constructor(snake, ghostSnake, food, score) {
+  constructor(snake, ghostSnake, food, score, timer) {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
     this.food = food;
     this.previousFood = new Food([0, 0], 'normal', 1);
     this.normalFoodCount = 1;
     this.score = score;
+    this.timer = timer;
+    this.timerId = timer.startTime();
   }
 
   moveSnake() {
@@ -23,7 +25,14 @@ class Game {
     this[snake].turn(direction);
   }
 
+  isOver() {
+    return this.timer.isTimeFinish();
+  }
+
   update() {
+    if (this.isOver()) {
+      clearInterval(this.timerId);
+    }
     const foodPosition = this.food.location;
     if (this.snake.isOnFood(foodPosition)) {
       this.normalFoodCount++;
@@ -64,6 +73,8 @@ class Game {
     };
 
     const score = this.score.currentScore;
-    return { snakes, food, score };
+
+    const time = this.timer.remainingTime;
+    return { snakes, food, score, time };
   }
 }

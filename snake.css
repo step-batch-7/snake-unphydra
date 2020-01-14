@@ -25,7 +25,7 @@ h1 {
   border-radius: 50%;
 }
 
-#score {
+.board {
   border: 2px solid black;
   width: 200px;
   text-align: center;

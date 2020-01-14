@@ -10,13 +10,17 @@
     <script src="direction.js"></script>
     <script src="food.js"></script>
     <script src="score.js"></script>
+    <script src="timer.js"></script>
   </head>
   <body onload="main()">
     <h1>Snake Game</h1>
     <div style="display: flex; justify-content: center;">
-      <div id="time"></div>
+      <div class="board">
+        <div>Time</div>
+        <div id="remainingTime">30</div>
+      </div>
       <div id="grid"></div>
-      <div id="score">
+      <div class="board">
         <div>Score</div>
         <div id="scoreResult">0</div>
       </div>

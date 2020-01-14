@@ -28,6 +28,12 @@ const drawGameOnGrid = function(game) {
   drawFood(status.food);
   eraseFood(status.food);
   showScore(status.score);
+  showTime(status.time);
+};
+
+const showTime = function(time) {
+  const remainingTime = document.getElementById('remainingTime');
+  remainingTime.innerText = time;
 };
 
 const showScore = function(score) {
@@ -99,7 +105,9 @@ const initializeGame = function() {
   const food = new Food([58, 25], 'normal', 1);
 
   const score = new Score(0);
-  const game = new Game(snake, ghostSnake, food, score);
+
+  const timer = new Timer(30);
+  const game = new Game(snake, ghostSnake, food, score, timer);
   return game;
 };
 
