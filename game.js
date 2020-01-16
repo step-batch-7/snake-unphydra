@@ -42,13 +42,10 @@ class Game {
       this.snake.grow();
       this.previousFood = this.food;
       const position = getRandomPosition();
-      let type = 'normal';
-      let value = 1;
+      this.food = new Food(position, 'normal', 1);
       if (!(this.normalFoodCount % 5)) {
-        type = 'special';
-        value = 5;
+        this.food = new Food(position, 'special', 5);
       }
-      this.food = new Food(position, type, value);
     }
   }
 
@@ -59,7 +56,6 @@ class Game {
       previousFood: { ...this.previousFood.status }
     };
     const score = this.score.currentScore;
-
     const time = this.timer.remainingTime;
     return { snakes, food, score, time };
   }
