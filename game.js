@@ -53,18 +53,7 @@ class Game {
   }
 
   get status() {
-    const snakes = [
-      {
-        type: this.snake.species,
-        position: this.snake.location,
-        previousTail: this.snake.movedTail
-      },
-      {
-        type: this.ghostSnake.species,
-        position: this.ghostSnake.location,
-        previousTail: this.ghostSnake.movedTail
-      }
-    ];
+    const snakes = [this.snake.status, this.ghostSnake.status];
     const food = {
       type: this.food.specialty,
       position: this.food.location,
