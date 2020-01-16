@@ -8,11 +8,14 @@ class Food {
     return this.positions.slice();
   }
 
-  get specialty() {
-    return this.type;
-  }
-
   get value() {
     return this.credit;
+  }
+
+  get status() {
+    return {
+      type: this.type,
+      position: this.positions.slice()
+    };
   }
 }

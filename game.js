@@ -55,14 +55,9 @@ class Game {
   get status() {
     const snakes = [this.snake.status, this.ghostSnake.status];
     const food = {
-      type: this.food.specialty,
-      position: this.food.location,
-      previousFood: {
-        position: this.previousFood.location,
-        type: this.previousFood.specialty
-      }
+      ...this.food.status,
+      previousFood: { ...this.previousFood.status }
     };
-
     const score = this.score.currentScore;
 
     const time = this.timer.remainingTime;
