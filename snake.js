@@ -40,7 +40,7 @@ class Snake {
     return isHeadOnFood(head, food);
   }
 
-  increase(part) {
-    this.positions.unshift(part.slice());
+  grow() {
+    this.positions.unshift(this.previousTail);
   }
 }

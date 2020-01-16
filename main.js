@@ -40,10 +40,10 @@ const eraseFood = function(food) {
 };
 const drawGameOnGrid = function(game) {
   const status = game.status;
-  drawSnakes(status.snakes);
   eraseTail(status.snakes);
-  drawFood(status.food);
+  drawSnakes(status.snakes);
   eraseFood(status.food);
+  drawFood(status.food);
   showSideBoard(status.score, 'scoreResult');
   showSideBoard(status.time, 'remainingTime');
 };
@@ -106,7 +106,7 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const food = new Food([58, 25], 'normal', 1);
+  const food = new Food([46, 25], 'normal', 1);
 
   const score = new Score(0);
 
@@ -130,7 +130,7 @@ const main = function() {
     game.moveSnake();
     game.update();
     drawGameOnGrid(game);
-  }, 50);
+  }, 500);
 
   setInterval(() => {
     const direction = ['turnLeft', 'turnUp', 'turnRight', 'turnDown'];

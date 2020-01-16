@@ -39,7 +39,7 @@ class Game {
     if (this.snake.isOnFood(foodPosition)) {
       this.normalFoodCount++;
       this.score.increaseScore(this.food.value);
-      this.snake.increase(foodPosition);
+      this.snake.grow();
       this.previousFood = this.food;
       const position = getRandomPosition();
       let type = 'normal';
