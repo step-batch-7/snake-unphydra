@@ -106,11 +106,9 @@ const initializeGame = function() {
     'ghost'
   );
 
-  const food = new Food([46, 25], 'normal', 1);
-
+  const food = new Food([46, 25], 'normal', 1, 1);
   const score = new Score(0);
-
-  const timer = new Timer(30);
+  const timer = new Timer(300);
   const game = new Game(snake, ghostSnake, food, score, timer);
   return game;
 };

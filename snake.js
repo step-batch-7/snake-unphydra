@@ -26,8 +26,10 @@ class Snake {
     return isHeadOnFood(head, food);
   }
 
-  grow() {
-    this.positions.unshift(this.previousTail);
+  grow(times) {
+    for (let index = 0; index < times; index++) {
+      this.positions.unshift(this.previousTail);
+    }
   }
 
   get status() {

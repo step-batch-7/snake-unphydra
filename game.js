@@ -9,7 +9,7 @@ class Game {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
     this.food = food;
-    this.previousFood = new Food([0, 0], 'normal', 1);
+    this.previousFood = new Food([0, 0], 'normal', 1, 1);
     this.normalFoodCount = 1;
     this.score = score;
     this.timer = timer;
@@ -39,12 +39,14 @@ class Game {
     if (this.snake.isOnFood(foodPosition)) {
       this.normalFoodCount++;
       this.score.increaseScore(this.food.value);
-      this.snake.grow();
+      console.log(this.food.growPower);
+
+      this.snake.grow(this.food.growPower);
       this.previousFood = this.food;
       const position = getRandomPosition();
-      this.food = new Food(position, 'normal', 1);
+      this.food = new Food(position, 'normal', 1, 1);
       if (!(this.normalFoodCount % 5)) {
-        this.food = new Food(position, 'special', 5);
+        this.food = new Food(position, 'special', 5, 2);
       }
     }
   }
