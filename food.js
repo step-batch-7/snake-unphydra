@@ -15,8 +15,6 @@ class Food {
   }
 
   get growPower() {
-    console.log(this.growth);
-
     return this.growth;
   }
 
