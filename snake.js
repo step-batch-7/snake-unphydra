@@ -1,5 +1,5 @@
-const isHeadOnFood = function(head, food) {
-  return head[0] == food[0] && head[1] == food[1];
+const isHeadOnPoint = function(head, point) {
+  return head[0] == point[0] && head[1] == point[1];
 };
 
 class Snake {
@@ -23,7 +23,7 @@ class Snake {
 
   isOnFood(food) {
     const head = this.positions.slice(-1)[0];
-    return isHeadOnFood(head, food);
+    return isHeadOnPoint(head, food);
   }
 
   grow(times) {
@@ -51,5 +51,12 @@ class Snake {
   hasTouchedWall() {
     const [headX, headY] = this.positions[this.positions.length - 1];
     return headX < 0 || headX > 99 || headY < 0 || headY > 59;
+  }
+
+  hasTouchedOtherSnake(positions) {
+    const head = this.positions[this.positions.length - 1];
+    return positions.slice(0, -1).some(position => {
+      return isHeadOnPoint(head, position);
+    });
   }
 }

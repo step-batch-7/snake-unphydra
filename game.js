@@ -29,7 +29,9 @@ class Game {
 
   isOver() {
     return (
-      (this.timer.isTimeFinish() || this.snake.hasTouchedWall()) &&
+      (this.timer.isTimeFinish() ||
+        this.snake.hasTouchedWall() ||
+        this.snake.hasTouchedOtherSnake(this.snake.status.position)) &&
       (clearInterval(this.timerId) || true)
     );
   }
