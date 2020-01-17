@@ -18,7 +18,9 @@ class Game {
 
   moveSnake() {
     this.snake.move();
-    // this.ghostSnake.move();
+    this.snake.wrap();
+    this.ghostSnake.move();
+    this.ghostSnake.wrap();
   }
 
   turn(snake, direction) {

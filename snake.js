@@ -39,4 +39,12 @@ class Snake {
       previousTail: this.previousTail
     };
   }
+
+  wrap() {
+    this.positions = this.positions.map(position => {
+      const colNo = (position[0] + 100) % 100;
+      const rowNo = (position[1] + 60) % 60;
+      return [colNo, rowNo];
+    });
+  }
 }

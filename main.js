@@ -128,7 +128,7 @@ const main = function() {
     game.moveSnake();
     game.update();
     drawGameOnGrid(game);
-  }, 500);
+  }, 100);
 
   setInterval(() => {
     const direction = ['turnLeft', 'turnUp', 'turnRight', 'turnDown'];

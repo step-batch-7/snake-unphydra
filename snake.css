@@ -36,6 +36,7 @@ h1 {
 
 .normal {
   background-color: rgb(0, 247, 255);
+  animation: normalFood 0.7s infinite alternate;
   border-radius: 50%;
 }
 
@@ -43,6 +44,15 @@ h1 {
   background-color: red;
   animation: specialFood 0.7s infinite alternate;
   border-radius: 50%;
+}
+
+@keyframes normalFood {
+  from {
+    box-shadow: 0px 0px 2px 2px rgb(77, 213, 231);
+  }
+  to {
+    box-shadow: rgb(88, 88, 241);
+  }
 }
 
 @keyframes specialFood {
