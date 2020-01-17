@@ -18,7 +18,7 @@ class Game {
 
   moveSnake() {
     this.snake.move();
-    this.snake.wrap();
+    // this.snake.wrap();
     this.ghostSnake.move();
     this.ghostSnake.wrap();
   }
@@ -29,7 +29,8 @@ class Game {
 
   isOver() {
     return (
-      this.timer.isTimeFinish() && (clearInterval(this.timerId) || true)
+      (this.timer.isTimeFinish() || this.snake.hasTouchedWall()) &&
+      (clearInterval(this.timerId) || true)
     );
   }
 

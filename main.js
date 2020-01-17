@@ -121,12 +121,13 @@ const main = function() {
   drawGameOnGrid(game);
 
   const movementId = setInterval(() => {
+    game.moveSnake();
+    game.update();
     if (game.isOver()) {
       showGameOverBoard(game);
       clearInterval(movementId);
+      return;
     }
-    game.moveSnake();
-    game.update();
     drawGameOnGrid(game);
   }, 100);
 

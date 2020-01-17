@@ -47,4 +47,9 @@ class Snake {
       return [colNo, rowNo];
     });
   }
+
+  hasTouchedWall() {
+    const [headX, headY] = this.positions[this.positions.length - 1];
+    return headX < 0 || headX > 99 || headY < 0 || headY > 59;
+  }
 }
