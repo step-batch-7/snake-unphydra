@@ -52,6 +52,15 @@ class Game {
         this.food = new Food(position, 'special', 5, 2);
       }
     }
+    if (this.ghostSnake.isOnFood(foodPosition)) {
+      this.normalFoodCount++;
+      this.previousFood = this.food;
+      const position = getRandomPosition();
+      this.food = new Food(position, 'normal', 1, 1);
+      if (!(this.normalFoodCount % 5)) {
+        this.food = new Food(position, 'special', 5, 2);
+      }
+    }
   }
 
   get status() {
