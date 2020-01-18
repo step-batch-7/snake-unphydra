@@ -59,4 +59,12 @@ class Snake {
       return isHeadOnPoint(head, position);
     });
   }
+
+  get headPosition() {
+    return this.positions[this.positions.length - 1].slice();
+  }
+
+  get heading() {
+    return this.direction.facing;
+  }
 }

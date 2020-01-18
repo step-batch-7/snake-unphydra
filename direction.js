@@ -8,6 +8,9 @@ class Direction {
     this.deltas[SOUTH] = [0, 1];
   }
 
+  get facing() {
+    return this.heading;
+  }
   get delta() {
     return this.deltas[this.heading];
   }

@@ -121,6 +121,7 @@ const main = function() {
   drawGameOnGrid(game);
 
   const movementId = setInterval(() => {
+    game.ghostSnakeMovement();
     game.moveSnake();
     game.update();
     if (game.isOver()) {
@@ -131,9 +132,9 @@ const main = function() {
     drawGameOnGrid(game);
   }, 100);
 
-  setInterval(() => {
-    const direction = ['turnLeft', 'turnUp', 'turnRight', 'turnDown'];
-    let x = Math.round(Math.random() * 3);
-    game.turn('ghostSnake', direction[x]);
-  }, 500);
+  // setInterval(() => {
+  //   const direction = ['turnLeft', 'turnUp', 'turnRight', 'turnDown'];
+  //   let x = Math.round(Math.random() * 3);
+  //   game.turn('ghostSnake', direction[x]);
+  // }, 500);
 };

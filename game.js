@@ -64,4 +64,25 @@ class Game {
     const time = this.timer.remainingTime;
     return { snakes, food, score, time };
   }
+
+  ghostSnakeMovement() {
+    const foodPosition = this.food.location;
+    let headPosition = this.ghostSnake.headPosition;
+    if (headPosition[0] == foodPosition[0]) {
+      if (foodPosition[1] > headPosition[1]) {
+        this.ghostSnake.turn('turnDown');
+        return;
+      }
+      this.ghostSnake.turn('turnUp');
+      return;
+    }
+    if (headPosition[1] == foodPosition[1]) {
+      if (foodPosition[0] > headPosition[0]) {
+        this.ghostSnake.turn('turnRight');
+        return;
+      }
+      this.ghostSnake.turn('turnLeft');
+      return;
+    }
+  }
 }
